@@ -78,4 +78,10 @@ const editItem = (req, res, next) => {
 const deleteItem = (req, res, next) => {
 };
 
-module.exports = {getItems};
+module.exports = {
+    getItems,
+    getItem,
+    createItem,
+    editItem,
+    deleteItem
+};

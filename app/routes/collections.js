@@ -2,10 +2,6 @@ const express = require('express');
 
 const router = express.Router();
 
-const itemRoutes = require('./items');
-
-router.use('/:collectionId', itemRoutes);
-
 router.get('/:collectionId');
 
 router.get('/', (req, res, next) => {
