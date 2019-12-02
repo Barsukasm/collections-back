@@ -3,9 +3,10 @@ const { validate } = require('jsonschema');
 const db = require('../db/db');
 
 const getItems = (req, res, next) => {
-  const { collectionId } = req.params;
+  const { collectionId } = req;
   try {
-    const items = db.get('collections')
+    const items = db
+      .get('collections')
       .find({ id: collectionId })
       .get('items');
     res.json({ status: 'OK', data: items });
@@ -15,9 +16,11 @@ const getItems = (req, res, next) => {
 };
 
 const getItem = (req, res, next) => {
-  const { collectionId, itemId } = req.params;
+  const { collectionId } = req;
+  const { itemId } = req.params;
   try {
-    const item = db.get('collections')
+    const item = db
+      .get('collections')
       .find({ id: collectionId })
       .get('items')
       .find({ id: itemId });
@@ -28,7 +31,7 @@ const getItem = (req, res, next) => {
 };
 
 const createItem = (req, res, next) => {
-  const { collectionId } = req.params;
+  const { collectionId } = req;
   const itemSchema = {
     type: 'object',
     properties: {
@@ -71,9 +74,11 @@ const createItem = (req, res, next) => {
 };
 
 const editItem = (req, res, next) => {
-  const { collectionId, itemId } = req.params;
+  const { collectionId } = req;
+  const { itemId } = req.params;
   try {
-    const editedItem = db.get('collections')
+    const editedItem = db
+      .get('collections')
       .find({ id: collectionId })
       .get('items')
       .find({ id: itemId })
@@ -91,7 +96,8 @@ const editItem = (req, res, next) => {
 };
 
 const deleteItem = (req, res, next) => {
-  const { collectionId, itemId } = req.params;
+  const { collectionId } = req;
+  const { itemId } = req.params;
   try {
     db.get('collections')
       .find({ id: collectionId })

@@ -1,3 +1,30 @@
 {
-  "collections": []
+  "collections": [
+    {
+      "id": "ukMHPWc-",
+      "name": "Фантики",
+      "description": "new description",
+      "items": [
+        {
+          "id": "Et2S51MO",
+          "name": "Ромашка",
+          "description": "Фантик от 'Ромашки'",
+          "owned": true
+        }
+      ]
+    },
+    {
+      "id": "npxuLGFA",
+      "name": "Фигурки",
+      "description": "Коллекция фигурок",
+      "items": [
+        {
+          "id": "D09nCEtT",
+          "name": "Hatsune Miku",
+          "description": "Фигурка 'Хатсуне Мику'",
+          "owned": true
+        }
+      ]
+    }
+  ]
 }
