@@ -12,13 +12,13 @@ app.use(morgan('combined'));
 
 app.use('/collections', collectionRoutes);
 
-app.get('/',(req, res, next) => {
-    res.json('Welcome');
+app.get('/', (req, res, next) => {
+  res.json('Welcome');
 });
 
 app.use((err, req, res, next) => {
-    const { message } = err;
-    res.json({ status: 'ERROR', message });
+  const { message } = err;
+  res.json({ status: 'ERROR', message });
 });
 
 app.listen(8080);
