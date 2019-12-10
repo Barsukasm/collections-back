@@ -10,7 +10,9 @@
   "author": "Nikolai Barsukov",
   "license": "ISC",
   "nodemonConfig": {
-    "ignore": ["db.json"]
+    "ignore": [
+      "db.json"
+    ]
   },
   "dependencies": {
     "body-parser": "^1.19.0",
