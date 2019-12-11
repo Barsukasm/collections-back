@@ -3,7 +3,7 @@
     {
       "id": "ukMHPWc-",
       "name": "Фантики",
-      "description": "new description",
+      "description": "Коллекция фантиков",
       "items": [
         {
           "id": "Et2S51MO",
@@ -11,7 +11,8 @@
           "description": "Фантик от 'Ромашки'",
           "owned": true
         }
-      ]
+      ],
+      "title": "Фантики"
     },
     {
       "id": "npxuLGFA",
