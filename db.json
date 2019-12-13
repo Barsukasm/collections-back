@@ -10,6 +10,12 @@
           "name": "Ромашка",
           "description": "Фантик от 'Ромашки'",
           "owned": true
+        },
+        {
+          "id": "YrOLSA-r",
+          "name": "Мишка на севере",
+          "description": "Фантик от конфеты \"Мишка на севере\"",
+          "owned": false
         }
       ],
       "title": "Фантики"
@@ -23,9 +29,10 @@
           "id": "D09nCEtT",
           "name": "Hatsune Miku",
           "description": "Фигурка 'Хатсуне Мику'",
-          "owned": true
+          "owned": false
         }
-      ]
+      ],
+      "title": "Фигурки"
     }
   ]
 }
