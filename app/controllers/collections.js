@@ -1,5 +1,6 @@
 const shortid = require('shortid');
 const { validate } = require('jsonschema');
+const fs = require('fs');
 const db = require('../db/db');
 
 const getCollections = (req, res, next) => {
@@ -26,26 +27,36 @@ const createCollection = (req, res, next) => {
     type: 'object',
     properties: {
       name: { type: 'string' },
-      description: { type: 'string' },
-      items: { type: 'array' }
+      description: { type: 'string' }
     },
-    required: ['name', 'description', 'items'],
+    required: ['name', 'description'],
     additionalProperties: false
   };
+
+  console.log(typeof req.body.items);
 
   const validationResult = validate(req.body, collectionSchema);
   if (!validationResult.valid) {
     throw new Error('INVALID_JSON_OR_API_FORMAT');
   }
 
-  const { name, description, items } = req.body;
+  const { name, description } = req.body;
+  let path;
+  if (req.file) {
+    path = req.file.path;
+  } else {
+    path = '';
+  }
 
   const collection = {
     id: shortid.generate(),
     name,
     description,
-    items
+    items: [],
+    path
   };
+
+  console.log(collection);
 
   try {
     db.get('collections')
@@ -82,7 +93,14 @@ const editCollection = (req, res, next) => {
 const removeCollection = (req, res, next) => {
   const { collectionId } = req.params;
   try {
-    db.get('collections')
+    const collection = db.get('collections');
+    const { path } = collection.find({ id: collectionId }).value();
+    fs.unlink(path, (err) => {
+      if (err) throw err;
+      console.log(`file ${path} was deleted`);
+    });
+
+    collection
       .remove({ id: collectionId })
       .write();
     res.json({ status: 'OK' });

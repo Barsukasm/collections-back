@@ -20,6 +20,8 @@ app.use((req, res, next) => {
 
 app.use(morgan('combined'));
 
+app.use(express.static('uploads/'));
+
 app.use('/collections', collectionRoutes);
 
 app.get('/', (req, res, next) => {
