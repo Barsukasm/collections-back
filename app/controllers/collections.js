@@ -95,10 +95,12 @@ const removeCollection = (req, res, next) => {
   try {
     const collection = db.get('collections');
     const { path } = collection.find({ id: collectionId }).value();
-    fs.unlink(path, (err) => {
-      if (err) throw err;
-      console.log(`file ${path} was deleted`);
-    });
+    if (path !== '') {
+      fs.unlink(path, (err) => {
+        if (err) throw err;
+        console.log(`file ${path} was deleted`);
+      });
+    }
 
     collection
       .remove({ id: collectionId })
