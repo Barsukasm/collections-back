@@ -33,8 +33,6 @@ const createCollection = (req, res, next) => {
     additionalProperties: false
   };
 
-  console.log(typeof req.body.items);
-
   const validationResult = validate(req.body, collectionSchema);
   if (!validationResult.valid) {
     throw new Error('INVALID_JSON_OR_API_FORMAT');
@@ -56,8 +54,6 @@ const createCollection = (req, res, next) => {
     path
   };
 
-  console.log(collection);
-
   try {
     db.get('collections')
       .push(collection)
@@ -73,14 +69,30 @@ const createCollection = (req, res, next) => {
 
 const editCollection = (req, res, next) => {
   const { collectionId } = req.params;
+
+  const collection = db.get('collections');
+  let { path } = collection.find({ id: collectionId }).value();
+  console.log(req.body);
+  if (req.file) {
+    if (path !== '') {
+      fs.unlink(path, (err) => {
+        if (err) throw err;
+      });
+    }
+    path = req.file.path;
+  }
+
+  const { name, description } = req.body;
+
   try {
     const editedCollection = db
       .get('collections')
       .find({ id: collectionId })
-      .assign(req.body)
+      .assign({ name, description, path })
       .value();
 
     db.write();
+    console.log('Edited collection', editedCollection);
     res.json({
       status: 'OK',
       data: editedCollection
@@ -98,13 +110,10 @@ const removeCollection = (req, res, next) => {
     if (path !== '') {
       fs.unlink(path, (err) => {
         if (err) throw err;
-        console.log(`file ${path} was deleted`);
       });
     }
 
-    collection
-      .remove({ id: collectionId })
-      .write();
+    collection.remove({ id: collectionId }).write();
     res.json({ status: 'OK' });
   } catch (e) {
     throw new Error(e);
