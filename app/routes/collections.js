@@ -1,7 +1,7 @@
 const express = require('express');
 const multer = require('multer');
-const collectionsController = require('../controllers/collections');
 const shortid = require('shortid');
+const collectionsController = require('../controllers/collections');
 
 const router = express.Router();
 const itemsRouter = require('./items');

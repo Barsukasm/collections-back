@@ -1,5 +1,6 @@
 const shortid = require('shortid');
 const { validate } = require('jsonschema');
+const fs = require('fs');
 const db = require('../db/db');
 
 const getItems = (req, res, next) => {
@@ -32,6 +33,7 @@ const getItem = (req, res, next) => {
 
 const createItem = (req, res, next) => {
   const { collectionId } = req;
+  console.log('CollectionId: ', collectionId);
   const itemSchema = {
     type: 'object',
     properties: {
@@ -43,18 +45,29 @@ const createItem = (req, res, next) => {
     additionalProperties: false
   };
 
-  const validationResult = validate(req.body, itemSchema);
+  const { name, description, owned: ownedString } = req.body;
+  const owned = ownedString !== 'false';
+  const body = {
+    name, description, owned
+  };
+  const validationResult = validate(body, itemSchema);
   if (!validationResult.valid) {
     throw new Error('INVALID_JSON_OR_API_FORMAT');
   }
 
-  const { name, description, owned } = req.body;
+  let path;
+  if (req.file) {
+    path = req.file.path;
+  } else {
+    path = '';
+  }
 
   const item = {
     id: shortid.generate(),
     name,
     description,
-    owned
+    owned,
+    path
   };
 
   try {
@@ -76,13 +89,45 @@ const createItem = (req, res, next) => {
 const editItem = (req, res, next) => {
   const { collectionId } = req;
   const { itemId } = req.params;
+  const {
+    name, description, owned: ownedString, removeImage
+  } = req.body;
+
+  const owned = ownedString !== 'false';
+
+  const item = db.get('collections').find({ id: collectionId }).get('items');
+  let { path } = item.find({ id: itemId }).value();
+  if (req.file) {
+    if (path !== '' && path !== undefined) {
+      fs.unlink(path, (err) => {
+        if (err) throw err;
+      });
+    }
+    path = req.file.path;
+  } else if (removeImage) {
+    if (path !== '' && path !== undefined) {
+      fs.unlink(path, (err) => {
+        if (err) throw err;
+      });
+      path = '';
+    }
+  }
+
+  const newItem = {
+    name,
+    description,
+    owned,
+    path
+  };
+
+
   try {
     const editedItem = db
       .get('collections')
       .find({ id: collectionId })
       .get('items')
       .find({ id: itemId })
-      .assign(req.body)
+      .assign(newItem)
       .value();
 
     db.write();
@@ -99,11 +144,18 @@ const deleteItem = (req, res, next) => {
   const { collectionId } = req;
   const { itemId } = req.params;
   try {
-    db.get('collections')
+    const items = db.get('collections')
       .find({ id: collectionId })
-      .get('items')
-      .remove({ id: itemId })
-      .write();
+      .get('items');
+
+    const { path } = items.find({ id: itemId }).value();
+    if (path !== '') {
+      fs.unlink(path, (err) => {
+        if (err) throw err;
+      });
+    }
+
+    items.remove({ id: itemId }).write();
     res.json({ status: 'OK' });
   } catch (e) {
     throw new Error(e);

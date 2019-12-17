@@ -1,55 +1,19 @@
 {
   "collections": [
     {
-      "id": "ukMHPWc-",
-      "name": "Фантики",
-      "description": "Коллекция фантиков",
+      "id": "ULoZcM_RX",
+      "name": "Коллекция фантиков",
+      "description": "Коллекция оберток от конфет",
       "items": [
         {
-          "id": "Et2S51MO",
-          "name": "Ромашка",
-          "description": "Фантик от 'Ромашки'",
-          "owned": true
-        },
-        {
-          "id": "YrOLSA-r",
-          "name": "Мишка на севере",
-          "description": "Фантик от конфеты \"Мишка на севере\"",
-          "owned": false
+          "id": "PTUGr4SXG",
+          "name": "Мишка на сервере",
+          "description": "sfsdf",
+          "owned": false,
+          "path": "uploads\\items\\c483xfATwrappers.jpg"
         }
       ],
-      "title": "Фантики"
-    },
-    {
-      "id": "npxuLGFA",
-      "name": "Фигурки",
-      "description": "Коллекция фигурок",
-      "items": [
-        {
-          "id": "D09nCEtT",
-          "name": "Hatsune Miku",
-          "description": "Фигурка 'Хатсуне Мику'",
-          "owned": false
-        }
-      ],
-      "title": "Фигурки"
-    },
-    {
-      "id": "c5n7hud9",
-      "name": "qweqw",
-      "description": "abcdfds",
-      "items": [],
-      "path": "",
-      "title": "qweqw",
-      "collection-cover": "undefined"
-    },
-    {
-      "id": "AABPZCK9",
-      "name": "qweqw",
-      "description": "qwefxxxxx",
-      "items": [],
-      "path": "uploads\\undefinedricon.svg",
-      "title": "qweqw"
+      "path": "uploads\\bDlTBebnwrappers.jpg"
     }
   ]
 }

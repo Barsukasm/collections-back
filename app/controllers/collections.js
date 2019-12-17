@@ -69,20 +69,25 @@ const createCollection = (req, res, next) => {
 
 const editCollection = (req, res, next) => {
   const { collectionId } = req.params;
+  const { name, description, removeImage } = req.body;
 
   const collection = db.get('collections');
   let { path } = collection.find({ id: collectionId }).value();
-  console.log(req.body);
   if (req.file) {
-    if (path !== '') {
+    if (path !== '' && path !== undefined) {
       fs.unlink(path, (err) => {
         if (err) throw err;
       });
     }
     path = req.file.path;
+  } else if (removeImage) {
+    if (path !== '' && path !== undefined) {
+      fs.unlink(path, (err) => {
+        if (err) throw err;
+      });
+      path = '';
+    }
   }
-
-  const { name, description } = req.body;
 
   try {
     const editedCollection = db
@@ -92,7 +97,6 @@ const editCollection = (req, res, next) => {
       .value();
 
     db.write();
-    console.log('Edited collection', editedCollection);
     res.json({
       status: 'OK',
       data: editedCollection
