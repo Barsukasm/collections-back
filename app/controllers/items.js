@@ -90,10 +90,11 @@ const editItem = (req, res, next) => {
   const { collectionId } = req;
   const { itemId } = req.params;
   const {
-    name, description, owned: ownedString, removeImage
+    name, description, owned: ownedString, removeImage: removeImageString
   } = req.body;
 
   const owned = ownedString !== 'false';
+  const removeImage = removeImageString !== 'false';
 
   const item = db.get('collections').find({ id: collectionId }).get('items');
   let { path } = item.find({ id: itemId }).value();

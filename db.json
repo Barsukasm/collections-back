@@ -8,12 +8,41 @@
         {
           "id": "PTUGr4SXG",
           "name": "Мишка на сервере",
-          "description": "sfsdf",
-          "owned": false,
-          "path": "uploads\\items\\c483xfATwrappers.jpg"
+          "description": "Обертка от конфеты \"Мишка на севере\"",
+          "owned": true,
+          "path": "uploads\\items\\Qis4YJj763595658.jpg"
+        },
+        {
+          "id": "8XPWfx84V",
+          "name": "eeee",
+          "description": "rrrr",
+          "owned": true,
+          "path": "uploads\\items\\hPkeYq5U105647_G_1561078093052.jpg"
         }
       ],
-      "path": "uploads\\bDlTBebnwrappers.jpg"
+      "path": "uploads\\yH1gW6-o63595658.jpg"
+    },
+    {
+      "id": "ieAHVho69",
+      "name": "Монеты",
+      "description": "Коллекция различных монет",
+      "items": [
+        {
+          "id": "AnL_OqliK",
+          "name": "Монета",
+          "description": "Какая-то случайная монета",
+          "owned": true,
+          "path": "uploads\\items\\IeumEPfoimgpreview.jpg"
+        }
+      ],
+      "path": "uploads\\fHmUx-Fx105647_G_1561078093052.jpg"
+    },
+    {
+      "id": "2EfQ4G53Q",
+      "name": "del",
+      "description": "edited",
+      "items": [],
+      "path": "uploads\\1Ab1xY3H63595658.jpg"
     }
   ]
 }

@@ -69,7 +69,9 @@ const createCollection = (req, res, next) => {
 
 const editCollection = (req, res, next) => {
   const { collectionId } = req.params;
-  const { name, description, removeImage } = req.body;
+  const { name, description, removeImage: removeImageString } = req.body;
+
+  const removeImage = removeImageString !== 'false';
 
   const collection = db.get('collections');
   let { path } = collection.find({ id: collectionId }).value();
