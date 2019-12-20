@@ -2,25 +2,25 @@
   "collections": [
     {
       "id": "ULoZcM_RX",
-      "name": "undefined",
+      "name": "Конфеты",
       "description": "Коллекция оберток от конфет",
       "items": [
         {
-          "id": "PTUGr4SXG",
-          "name": "Мишка на сервере",
-          "description": "Обертка от конфеты \"Мишка на севере\"",
-          "owned": true,
-          "path": "uploads\\items\\Qis4YJj763595658.jpg"
+          "id": "r3uWK2s2P",
+          "name": "Ромашка",
+          "description": "",
+          "owned": false,
+          "path": "uploads\\items\\GahbQeBUobertka_ot_konfety_fantik_romashka.jpg"
         },
         {
-          "id": "8XPWfx84V",
-          "name": "eeee",
-          "description": "rrrr",
+          "id": "CfDpoWWpu",
+          "name": "Мишка на севере",
+          "description": "Обертка конфеты \"Мишка на Севере\"",
           "owned": true,
-          "path": "uploads\\items\\hPkeYq5U105647_G_1561078093052.jpg"
+          "path": "uploads\\items\\9DrmcAPD1122775_original.jpg"
         }
       ],
-      "path": "uploads\\wRKpn30_wrappers.jpg"
+      "path": "uploads\\w2ACiW1Rwrappers.jpg"
     },
     {
       "id": "ieAHVho69",
@@ -35,14 +35,7 @@
           "path": "uploads\\items\\IeumEPfoimgpreview.jpg"
         }
       ],
-      "path": "uploads\\fHmUx-Fx105647_G_1561078093052.jpg"
-    },
-    {
-      "id": "2EfQ4G53Q",
-      "name": "del",
-      "description": "edited",
-      "items": [],
-      "path": "uploads\\1Ab1xY3H63595658.jpg"
+      "path": "uploads\\7eLvwM8Ocoins.png"
     }
   ]
 }

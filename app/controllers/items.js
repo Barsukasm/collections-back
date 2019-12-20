@@ -121,7 +121,6 @@ const editItem = (req, res, next) => {
     path
   };
 
-
   try {
     const editedItem = db
       .get('collections')
